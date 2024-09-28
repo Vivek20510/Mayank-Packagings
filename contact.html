@@ -22,7 +22,7 @@
     <section class="contact">
         <h1>Contact Us</h1>
         <p>If you have any questions, feel free to reach out to us at:</p>
-        <p><strong>Phone:</strong> +91 </p> <!-- Add your actual phone number here -->
+        <p><strong>Phone:</strong> +91 9425125228</p> <!-- Add your actual phone number here -->
         
         <form id="contact-form">
             <label for="name">Name</label>
@@ -39,7 +39,6 @@
         <div id="response-message"></div>
     </section>
     
-
     <footer>
         <p>&copy; 2024 Leno Bags & Packing Material. All rights reserved.</p>
     </footer>
@@ -68,19 +67,20 @@
                 message: message
             };
 
-            // Simulate sending data to a backend server (for now, we'll just log it to the console)
-            console.log("Form Submitted", formData);
-
-            // If you want to send this data to a backend server, use the Fetch API like below:
-            /*
-            fetch('YOUR_BACKEND_API_URL', {
+            // Send data to the backend server
+            fetch('http://localhost:5000/contact', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
                 },
                 body: JSON.stringify(formData)
             })
-            .then(response => response.json())
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok ' + response.statusText);
+                }
+                return response.json();
+            })
             .then(data => {
                 document.getElementById("response-message").textContent = "Your message has been sent successfully!";
             })
@@ -88,10 +88,6 @@
                 console.error('Error:', error);
                 document.getElementById("response-message").textContent = "There was an error sending your message. Please try again later.";
             });
-            */
-
-            // Display success message on the front-end for now
-            document.getElementById("response-message").textContent = "Your message has been sent successfully!";
         });
     </script>
 </body>
