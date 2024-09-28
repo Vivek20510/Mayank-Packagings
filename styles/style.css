@@ -168,8 +168,8 @@ header nav ul li a:hover {
 
 .contact form button {
     width: 100%;
-    padding: 15px;
-    background-color: #0047ab; /* Primary Color */
+    padding: 10px 0;;;
+    background-color: #f39c12; /* Primary Color */
     border: none;
     color: #ffffff; /* White */
     font-size: 18px;
