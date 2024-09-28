@@ -132,7 +132,7 @@ header nav ul li a:hover {
 
 /* Contact Form */
 .contact {
-    padding: 10px 0px;
+    padding: 50px 20px;
     text-align: center;
 }
 
@@ -141,6 +141,7 @@ header nav ul li a:hover {
     margin-bottom: 30px;
 }
 
+/* Contact Form Styles */
 .contact form {
     display: inline-block;
     text-align: left;
@@ -148,7 +149,9 @@ header nav ul li a:hover {
     padding: 30px;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    width: 500px;
+    width: 500px; /* Fixed width for larger screens */
+    max-width: 100%; /* Allow the form to scale down */
+    box-sizing: border-box; /* Ensure padding and borders are included in the width */
 }
 
 .contact form label {
@@ -157,7 +160,8 @@ header nav ul li a:hover {
     font-weight: bold;
 }
 
-.contact form input, .contact form textarea {
+.contact form input,
+.contact form textarea {
     width: 100%;
     padding: 10px;
     margin-bottom: 20px;
@@ -168,7 +172,7 @@ header nav ul li a:hover {
 
 .contact form button {
     width: 100%;
-    padding: 10px 0;;;
+    padding: 10px 0;
     background-color: #f39c12; /* Primary Color */
     border: none;
     color: #ffffff; /* White */
@@ -180,6 +184,43 @@ header nav ul li a:hover {
 .contact form button:hover {
     background-color: #d35400; /* Secondary Color */
 }
+
+/* Media Queries for Responsive Design */
+@media (max-width: 768px) {
+    .contact form {
+        width: 90%; /* Adjust the width for medium-sized screens */
+        padding: 20px; /* Reduce padding */
+    }
+
+    .contact h1 {
+        font-size: 28px; /* Smaller font size for titles */
+    }
+}
+
+@media (max-width: 480px) {
+    .contact {
+        padding: 30px 10px; /* Adjust padding */
+    }
+
+    .contact h1 {
+        font-size: 24px; /* Further reduce font size for smaller screens */
+    }
+
+    .contact form {
+        width: 100%; /* Full width on small devices */
+        padding: 15px; /* Reduce padding for smaller screens */
+    }
+
+    .contact form input, 
+    .contact form textarea {
+        font-size: 16px; /* Adjust font size for readability */
+    }
+
+    .contact form button {
+        font-size: 16px; /* Adjust button font size */
+    }
+}
+
 
 /* Response Message */
 #response-message {
@@ -265,3 +306,5 @@ footer {
         flex: 1 1 100%; /* Full width on small screens */
     }
 }
+
+
