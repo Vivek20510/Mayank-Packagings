@@ -1,6 +1,6 @@
+// backend/config/db.js
 const mongoose = require('mongoose');
 
-// Function to connect to the database
 const connectDB = async () => {
   try {
     const conn = await mongoose.connect(process.env.MONGO_URI, {
@@ -8,8 +8,8 @@ const connectDB = async () => {
       useUnifiedTopology: true,
     });
     console.log(`MongoDB Connected: ${conn.connection.host}`);
-  } catch (error) {
-    console.error(`Error: ${error.message}`);
+  } catch (err) {
+    console.error(`Error: ${err.message}`);
     process.exit(1);
   }
 };
