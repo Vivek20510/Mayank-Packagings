@@ -304,3 +304,10 @@ footer {
         height: auto; /* Auto height to maintain aspect ratio */
     }
 }
+
+#response-message {
+    margin-top: 20px;
+    font-size: 1.2em;
+    color: green; /* Change this color for success */
+}
+

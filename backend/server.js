@@ -1,34 +1,36 @@
 const express = require('express');
-const path = require('path');
-const mongoose = require('mongoose');
+const dotenv = require('dotenv');
+const connectDB = require('./config/db');
 const contactRoutes = require('./routes/contactRoutes');
-const app = express();
-const PORT = process.env.PORT || 5000;
+const cors = require('cors');
+const path = require('path');
 
-// Middleware
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+// Load environment variables from .env file
+dotenv.config();
 
 // Connect to MongoDB
-mongoose.connect(process.env.MONGODB_URI, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true
-})
-.then(() => console.log("MongoDB connected"))
-.catch(err => console.error(err));
+connectDB();
+
+// Initialize express app
+const app = express();
+
+// Middleware for parsing JSON data and handling CORS
+app.use(express.json());
+app.use(cors());
 
 // Routes
-app.use('/contact', contactRoutes);
+app.use('/api/contact', contactRoutes); // Contact form route
 
-// Serve static files from the frontend directory
+// Serve static files for frontend
 app.use(express.static(path.join(__dirname, '../frontend')));
 
-// Handle any other requests by serving the index.html
+// Default route to serve frontend files
 app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, '../frontend', 'index.html'));
+  res.sendFile(path.resolve(__dirname, '../frontend', 'index.html'));
 });
 
-// Start the server
+// Port configuration
+const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
-    console.log(`Server is running on http://localhost:${PORT}`);
+  console.log(`Server running on port ${PORT}`);
 });
