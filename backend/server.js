@@ -19,7 +19,7 @@ app.use(express.json());
 app.use(cors());
 
 // Routes
-app.use('/api/contact', contactRoutes); // Contact form route
+app.use('/contact', contactRoutes); // Contact form route
 
 // Serve static files for frontend
 app.use(express.static(path.join(__dirname, '../frontend')));

@@ -17,7 +17,7 @@ document.getElementById("contact-form").addEventListener("submit", function(even
     const formData = { name, email, message };
 
     // Send data to the backend server using the correct API endpoint
-    fetch('http://localhost:5000/api/contact', {
+    fetch('http://localhost:5000/contact', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData)
