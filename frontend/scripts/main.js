@@ -17,7 +17,7 @@ document.getElementById("contact-form").addEventListener("submit", function(even
     const formData = { name, email, message };
 
     // Send data to the backend server using the correct API endpoint
-    fetch('https://mayank-packagings-backend.onrender.com', {
+    fetch('https://mayank-packagings-backend.onrender.com/contact', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData)
