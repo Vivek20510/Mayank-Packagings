@@ -1,39 +1,67 @@
-// JavaScript for form handling
-document.getElementById("contact-form").addEventListener("submit", function(event) {
-    event.preventDefault(); // Prevent default form submission
+require('dotenv').config();
+const { MongoClient } = require('mongodb');
+const nodemailer = require('nodemailer');
 
-    // Collect form data
-    const name = document.getElementById("name").value;
-    const email = document.getElementById("email").value;
-    const message = document.getElementById("message").value;
+// MongoDB connection details from .env file
+const MONGO_URI = process.env.MONGO_URI;
+const DATABASE_NAME = 'mayank-packagings'; // Your actual database name
+const COLLECTION_NAME = 'mayank-packagings.contacts'; // Your actual collection name
 
-    // Simple client-side validation
-    if (!name || !email || !message) {
-        alert("Please fill in all fields.");
-        return;
-    }
+// Email credentials from .env file
+const EMAIL_USER = process.env.EMAIL_USER;
+const EMAIL_PASS = process.env.EMAIL_PASS;
+const EMAIL_RECEIVER = process.env.EMAIL_RECEIVER;
 
-    // Create an object to hold the form data
-    const formData = { name, email, message };
+// Function to fetch data from MongoDB
+async function fetchDataFromMongoDB() {
+  try {
+    const client = await MongoClient.connect(MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true });
+    const db = client.db(DATABASE_NAME);
+    const collection = db.collection(COLLECTION_NAME);
 
-    // Send data to the backend server using the correct API endpoint
-    fetch('https://mayank-packagings-backend.onrender.com/contact', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(formData)
-    })
-    
-    .then(response => {
-        if (!response.ok) {
-            throw new Error('Network response was not ok ' + response.statusText);
-        }
-        return response.json();
-    })
-    .then(data => {
-        document.getElementById("response-message").textContent = "Your message has been sent successfully!";
-    })
-    .catch(error => {
-        console.error('Error:', error);
-        document.getElementById("response-message").textContent = "There was an error sending your message. Please try again later.";
-    });
-});
+    // Fetch all data from the collection
+    const data = await collection.find({}).toArray();
+    await client.close();
+    return data;
+  } catch (error) {
+    console.error('Failed to fetch data from MongoDB:', error);
+    throw error;
+  }
+}
+
+// Function to send email
+async function sendEmail(data) {
+  const transporter = nodemailer.createTransport({
+    service: 'gmail',
+    auth: {
+      user: EMAIL_USER,
+      pass: EMAIL_PASS,
+    },
+  });
+
+  // Prepare email content
+  const mailOptions = {
+    from: EMAIL_USER,
+    to: EMAIL_RECEIVER,
+    subject: 'MongoDB Data Extraction',
+    text: `Here is the extracted data:\n\n${JSON.stringify(data, null, 2)}`,
+  };
+
+  // Send email
+  try {
+    await transporter.sendMail(mailOptions);
+    console.log('Email sent successfully!');
+  } catch (error) {
+    console.error('Failed to send email:', error);
+  }
+}
+
+// Main function to run the script
+(async () => {
+  try {
+    const data = await fetchDataFromMongoDB();
+    await sendEmail(data);
+  } catch (error) {
+    console.error('Error:', error);
+  }
+})();
