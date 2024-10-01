@@ -1,3 +1,4 @@
 User-agent: *
 Allow: /
-Sitemap: https://https://mayank-packagings.onrender.com/sitemap.xml
+Sitemap: https://mayank-packagings.onrender.com/sitemap.xml
+sitemap: https://mayank-packagings.onrender.com/sitemap.xml
