@@ -39,7 +39,7 @@ async function sendEmail(data) {
     },
   });
 
-  // Prepare email content
+  // Prepare email 
   const mailOptions = {
     from: EMAIL_USER,
     to: EMAIL_RECEIVER,
