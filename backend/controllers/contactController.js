@@ -14,10 +14,11 @@ const createContact = async (req, res) => {
         const contact = new Contact({ name, email, message });
         await contact.save();
 
-        // Return success response
+        // Return success response with the created contact object
         res.status(201).json({ message: 'Contact message sent successfully', contact });
     } catch (error) {
         console.error('Error:', error);
+        // Return error response for server-side issues
         res.status(500).json({ message: 'Server error, please try again later' });
     }
 };
