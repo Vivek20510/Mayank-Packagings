@@ -16,21 +16,23 @@ const app = express();
 
 // Middleware for parsing JSON data and handling CORS
 app.use(express.json());
-app.use(cors());
+app.use(cors({
+    origin: 'https://mayank-packagings.onrender.com', // Allow only your frontend URL
+}));
 
 // Routes
-app.use('/contact', contactRoutes); // Contact form route
+app.use('/api/contacts', contactRoutes); // Changed to '/api/contacts' for clarity
 
 // Serve static files for frontend
 app.use(express.static(path.join(__dirname, '../frontend')));
 
 // Default route to serve frontend files
 app.get('*', (req, res) => {
-  res.sendFile(path.resolve(__dirname, '../frontend', 'index.html'));
+    res.sendFile(path.resolve(__dirname, '../frontend', 'index.html'));
 });
 
 // Port configuration
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
+    console.log(`Server running on port ${PORT}`);
 });
