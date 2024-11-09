@@ -310,4 +310,19 @@ footer {
     font-size: 1.2em;
     color: green; /* Change this color for success */
 }
+.logo {
+    color: #f39c12; /* Use Secondary Color */
+    font-size: 32px;
+    font-weight: bold;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+}
+
+.logo .logo-img {
+    width: 50px;  /* Adjust size */
+    height: 50px; /* Make it round */
+    border-radius: 50%;  /* Make it circular */
+    margin-right: 10px; /* Space between image and text */
+}
 
