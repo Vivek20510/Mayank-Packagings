@@ -1,18 +1,12 @@
-#**Mayank Packaging Website**
+# React + Vite
 
-This repository contains the source code for the Mayank Packaging website, a digital platform showcasing our high-quality packaging solutions. We specialize in Leno Bags, PP Bags, and BOPP Packing Materials, designed to cater to various industries' needs.
+This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-**Features**
-Responsive Design: The website is optimized for both desktop and mobile devices.
-Product Showcase: Detailed information about our products, including images and descriptions.
-About Us: Insights into our vision, mission, and values.
-Contact Form: A user-friendly contact form for inquiries and feedback.
-Technologies Used
-HTML5
-CSS3
-JavaScript
-**Getting Started**
-To view the website, simply clone this repository and open the index.html file in your web browser.
+Currently, two official plugins are available:
 
-**Contribution**
-Contributions are welcome! Please feel free to submit issues or pull requests.
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+
+## Expanding the ESLint configuration
+
+If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
