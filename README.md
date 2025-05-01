@@ -1,12 +1,24 @@
-# React + Vite
+# Mayank Packaging Solutions Website
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This project is a modern, responsive website for **Mayank Packaging Solutions**, a trading business in packaging materials. Built with **React + Vite**, it includes features like:
 
-Currently, two official plugins are available:
+- A contact form powered by **EmailJS**
+- Clean and modern UI with **Tailwind CSS**
+- Icon support via **Lucide-React**
+- Environment-based configuration with **Vite**
+- WhatsApp chat integration for direct communication
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Tech Stack
 
-## Expanding the ESLint configuration
+- **React** (Frontend library)
+- **Vite** (Development & Build tool)
+- **Tailwind CSS** (Utility-first styling)
+- **EmailJS** (Send emails directly from the contact form)
+- **Lucide-React** (Icon set)
+- **Deployment**: Render / Netlify (or similar)
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Getting Started
+
+```bash
+npm install
+npm run dev
