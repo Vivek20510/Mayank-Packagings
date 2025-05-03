@@ -31,9 +31,6 @@ function App() {
           {/* Logo */}
           <div className="flex items-center space-x-2">
             <img src="/logo.png" alt="Logo" className="h-10" />
-            <span className="font-bold text-lg text-[#004D40]">
-              Mayank Packaging Solutions
-            </span>
           </div>
 
           {/* Mobile Menu Toggle */}
